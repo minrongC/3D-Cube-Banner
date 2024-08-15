@@ -1,0 +1,64 @@
+/* 스타일시트 초기화 입니다.*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* 스타일시트 초기화 입니다.*/
+body {
+  background-color: #1f1f1f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* 3d 공간에 배치하면 원근감을 줘야합니다. 
+원근감은 transform-style:preserve 속성을 지정한 div태그의 가장 바깥에 있는 곳에 지정합니다*/
+.container {
+  perspective: 1000px;
+}
+
+/* 큐브베너가 들어가는 cube라는 클래스(컨테이너라고 생각하면 됨) 설정입니다.
+transform-style 속성을 사용해서 3D 속성값을 적용합니다.
+이렇게 하면 class cube 아래 배치되어 있는 요소들은 3d공간에 배치가 됩니다. */
+.cube {
+  width: 128px;
+  height: 128px;
+  transform-style: preserve-3d;
+  /* transition 속성을 사용해서 애니메이션 효과를 적용합니다.*/
+  transition: all 1s;
+
+  /* transform rotateX는 이미지를 담고있는 컨테이너 class cube를 x축으로 회전시켜 보는 설정입니다*/
+  /* transform: rotateX(-300deg); */
+}
+
+/* 이미지들을 하나로 겹치게 하기 위한 설정입니다.*/
+.cube img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* 요소의 첫번째 이미지 태그를 transform 속성을 사용하여 앞으로 당겨오는 설정입니다.*/
+.cube img:nth-child(1) {
+  transform: translateZ(64px);
+}
+
+/* class cube밑에 있는 img태그의 두 번쨰 이미지 태그를 설정합니다.(X축을 기준으로 회전)
+3d요소에서 x,y,z 축은 유동적입니다.
+rotate 는 회전입니다. deg는 각도의 설정값 입니다.*/
+/* translateZ 속성을 적용해서 이미지의 절반만큼 (64px) 위쪽으로 올라가게 설정합니다.*/
+.cube img:nth-child(2) {
+  transform: rotateX(90deg) translateZ(64px);
+}
+
+/* translateZ를 사용해서 해당 이미지의 절반인 64px만큼 안쪽으로 들어가게 (z축을 이용)원근감을 주는 설정입니다.*/
+.cube img:nth-child(3) {
+  transform: rotateX(180deg) translateZ(64px);
+}
+
+/* translateZ를 사용해서 해당 이미지의 절반인 64px만큼 아래쪽으로 배치가 되게 하는 설정입니다.*/
+.cube img:nth-child(4) {
+  transform: rotateX(270deg) translateZ(64px);
+}

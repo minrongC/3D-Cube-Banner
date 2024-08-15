@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cube Banner</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="cube">
+        <img src="images/facebook.png" alt="페이스북 아이콘 이미지" />
+        <img src="images/twitter.png" alt="트위터 아이콘 이미지" />
+        <img src="images/youtube.png" alt="유튜브 아이콘 이미지" />
+        <img src="images/instagram.png" alt="인타그램 아이콘 이미지" />
+      </div>
+    </div>
+
+    <script>
+      // 최초 초기값을 0으로 설정합니다
+      let deg = 0;
+      //   setInterval이라는 반복함수를 사용합니다. 기존의 각도에서 90도를 뺴주며 반복은 1초마다 일어납니다.
+      setInterval(() => {
+        deg = deg - 90;
+        // document.querySelector 매서드를 이용해서 class cube를 선택합니다
+        // stlye transfrom을 제어해서 rotateX 값을 여기서 구한 deg 라는 변수의 각도로 지정해줍니다.
+        document.querySelector(".cube").style.transform =
+          "rotateX(" + deg + "deg)";
+      }, 1000);
+    </script>
+  </body>
+</html>
